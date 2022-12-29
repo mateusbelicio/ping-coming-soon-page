@@ -4,7 +4,7 @@
   "description": "Frontend Mentor - Ping coming soon page solution",
   "default": "index.html",
   "scripts": {
-    "dev": "parcel index.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
