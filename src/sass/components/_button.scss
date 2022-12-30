@@ -1,3 +1,56 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.btn {
+  background: none;
+  border: none;
+  border-radius: to-rem(30);
+  cursor: pointer;
+
+  &--default {
+    font-size: clamp(to-rem(12), to-view-width(14), to-rem(16));
+    font-weight: 600;
+    background-color: color('primary');
+    color: color('neutral', 300);
+    box-shadow: 0 to-rem(5) to-rem(10) color('primary', 300);
+    padding: to-rem(14) to-rem(32);
+
+    @include breakpoint('large') {
+      padding: to-rem(20) to-rem(32);
+    }
+
+    &:hover {
+      filter: opacity(0.8);
+    }
+
+    &:active {
+      box-shadow: 0 to-rem(3) to-rem(3) color('primary', 300);
+      transform: scale(0.99);
+    }
+  }
+
+  &--social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1;
+    width: to-rem(32);
+    text-decoration: none;
+    font-size: to-rem(14);
+
+    border: to-rem(1) solid color('primary', 300);
+    background-color: color('neutral', 300);
+    color: color('primary');
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: color('primary');
+      color: color('neutral', 300);
+      border-color: color('primary');
+    }
+  }
+}

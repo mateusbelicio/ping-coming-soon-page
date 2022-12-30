@@ -9,7 +9,7 @@ $ff-primary: 'Libre Franklin', sans-serif;
 
 /// Container's maximum width
 /// @type Length
-$max-width: 69.375rem !default;
+$max-width: 44rem !default;
 
 $colors: (
   primary: (
@@ -23,7 +23,7 @@ $colors: (
     500: hsl(225, 4%, 18%),
   ),
   accent: (
-    400: hsl(354, 100%, 66%),
+    400: hsl(354, 70%, 66%),
   ),
 );
 

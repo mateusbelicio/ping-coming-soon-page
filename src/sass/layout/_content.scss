@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the main content of the site/application.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.content {
+  display: grid;
+  row-gap: to-rem(10);
+  grid-template-rows: repeat(3, auto) 1fr auto;
+  justify-items: center;
+  padding-top: to-rem(82);
+  text-align: center;
+
+  &__logo {
+    width: clamp(to-rem(54), to-view-width(70), to-rem(86));
+  }
+
+  &__title {
+    margin-block: to-rem(30) to-rem(12);
+
+    @include breakpoint('large') {
+      margin-block: to-rem(50) to-rem(14);
+    }
+  }
+
+  &__form {
+    display: grid;
+    align-items: start;
+    row-gap: to-rem(10);
+    column-gap: to-rem(16);
+    width: min(to-rem(280), 100%);
+    margin-block: to-rem(20) auto;
+
+    @include breakpoint('medium') {
+      grid-template-columns: 2fr 1fr;
+      width: 100%;
+    }
+  }
+
+  &__image {
+    width: min(to-rem(400), 100%);
+
+    @include breakpoint('medium') {
+      margin-top: to-rem(64);
+      width: 100%;
+    }
+  }
+}
