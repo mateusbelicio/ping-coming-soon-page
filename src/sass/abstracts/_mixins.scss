@@ -2,6 +2,8 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+@use 'variables' as *;
+
 /// Event wrapper
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
@@ -30,6 +32,17 @@
 /// @param {String} $context
 @mixin when-inside($context) {
   #{$context} & {
+    @content;
+  }
+}
+
+@mixin breakpoint($size) {
+  @if not map-has-key($breakpoints, $size) {
+    @error 'There is no size named `#{$size}` in $breakpoints. '
+         + 'Size should be one of #{map-keys($breakpoints)}.';
+  }
+
+  @media screen and (min-width: map-get($breakpoints, $size)) {
     @content;
   }
 }

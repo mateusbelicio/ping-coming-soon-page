@@ -2,29 +2,46 @@
 // This file contains all application-wide Sass functions.
 // -----------------------------------------------------------------------------
 
-/// Native `url(..)` function wrapper
-/// @param {String} $base - base URL for the asset
-/// @param {String} $type - asset type folder (e.g. `fonts/`)
-/// @param {String} $path - asset path
-/// @return {Url}
-@function asset($base, $type, $path) {
-  @return url($base + $type + $path);
+/// Returns a variable of the color based on name color and shade
+/// @access public
+/// @param {String} $color - color name (e.g. 'primary', 'accent'...)
+/// @param {Number} $shade - shade value
+/// @return {CSS var} (e.g. var(--clr-primary-400))
+@function color($color, $shade: 400) {
+  @return var(--clr-#{$color}-#{$shade});
 }
 
-/// Returns URL to an image based on its path
-/// @param {String} $path - image path
-/// @param {String} $base [$base-url] - base URL
-/// @return {Url}
-/// @require $base-url
-@function image($path, $base: $base-url) {
-  @return asset($base, 'images/', $path);
+/// Returns a value in (px) converted to (rem)
+/// @access public
+/// @param {Number} $value - value in px
+/// @return {Number}
+/// @require $value
+@function to-rem($value) {
+  @return #{calc($value / 16)}rem;
 }
 
-/// Returns URL to a font based on its path
-/// @param {String} $path - font path
-/// @param {String} $base [$base-url] - base URL
-/// @return {Url}
-/// @require $base-url
-@function font($path, $base: $base-url) {
-  @return asset($base, 'fonts/', $path);
+/// Returns a value in (px) converted to (vw), given a view width as a
+/// reference and the font size in px to these view width
+/// @access public
+/// @param {Number} $value - font size in px
+/// @param {Number} $width - reference width in px
+/// @return {Number}
+/// @require $value
+/// @require $width
+@function to-view-width($value, $width: 768) {
+  @return #{calc($value * 100 / $width)}vw;
+}
+
+/// Get a z-index value from a layer name
+/// @access public
+/// @param {String} $layer - Layer's name
+/// @return {Number}
+/// @require $z-indexes
+@function z($layer) {
+  @if not map-has-key($z-indexes, $layer) {
+    @error 'There is no layer named `#{$layer}` in $z-indexes. '
+         + 'Layer should be one of #{map-keys($z-indexes)}.';
+  }
+
+  @return map-get($z-indexes, $layer);
 }
