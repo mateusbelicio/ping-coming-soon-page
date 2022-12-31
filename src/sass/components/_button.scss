@@ -53,4 +53,12 @@
       border-color: color('primary');
     }
   }
+
+  &--close {
+    font-size: smaller;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

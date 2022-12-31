@@ -14,6 +14,10 @@
     border: to-rem(1) solid color('accent');
   }
 
+  &[data-valid='false'] &__error-msg {
+    display: block;
+  }
+
   &__label {
     display: grid;
     justify-items: center;
@@ -34,6 +38,7 @@
   }
 
   &__error-msg {
+    display: none;
     color: color('accent');
     font-size: clamp(to-rem(10), to-view-width(11), to-rem(12));
     font-style: italic;

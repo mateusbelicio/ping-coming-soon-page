@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the message component.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.message {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  background-color: color('primary', 300);
+  color: color('primary', 500);
+  font-size: clamp(to-rem(12), to-view-width(16), to-rem(16));
+  font-weight: 600;
+  padding: to-rem(12) to-rem(24);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  animation: fade 0.5s ease-out forwards;
+}
+
+@keyframes fade {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
