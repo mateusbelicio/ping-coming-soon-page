@@ -4,7 +4,6 @@
 // GLOBAL DEFINITIONS
 const MSG_ERROR_EMPTY = 'Whoops! It looks like you forgot to add your email';
 const MSG_ERROR_INVALID = 'Please provide a valid email address';
-const SEND_TIME_SEC = 2;
 
 /////////////////////
 // SELECTING DOM ELEMENTS
@@ -55,11 +54,13 @@ const renderMessage = function () {
     </div>
   `;
 
-  body.insertAdjacentHTML('beforeend', markup);
+  if (!body.querySelector('.message')) {
+    body.insertAdjacentHTML('beforeend', markup);
 
-  // Add event handle to close message
-  const close = document.querySelector('.message .btn--close');
-  close.addEventListener('click', () => close.closest('.message').remove());
+    // Add event handle to close message
+    const close = document.querySelector('.message .btn--close');
+    close.addEventListener('click', () => close.closest('.message').remove());
+  }
 };
 
 /////////////////////
@@ -82,11 +83,9 @@ form.addEventListener('submit', function (event) {
   }
 
   // Shows thanks message (form submited)
-  setTimeout(() => {
-    renderMessage();
-    clearError();
+  renderMessage();
+  clearError();
 
-    // Clear input
-    emailInput.value = '';
-  }, SEND_TIME_SEC * 1000);
+  // Clear input
+  emailInput.value = '';
 });
