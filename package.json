@@ -5,7 +5,9 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist",
+    "predeploy": "rd /s dist && parcel build index.html --no-source-maps --public-url /ping-coming-soon-page/",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/mateusbelicio/ping-coming-soon-page",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
+    "gh-pages": "^4.0.0",
     "parcel": "^2.8.2",
     "sass": "^1.57.1"
   },
